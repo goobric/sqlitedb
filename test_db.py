@@ -1,0 +1,42 @@
+import sqlite3
+
+#connection = sqlite3.connect(':memory:')
+connection = sqlite3.connect('customer.db')
+
+# a 'cursor' tells the database what we want to do c=cursor
+# DataTypes
+# NULL
+# INTEGER
+# REAL
+# TEXT
+# BLOB
+
+c = connection.cursor()
+
+# create a Table of data
+# c.execute("""CREATE TABLE customers (
+#     first_name TEXT,
+#     last_name TEXT,
+#     email TEXT
+#   )""")
+
+# many_customers = [
+#                   ('Wes', 'Brown', 'wes@brown.com'),
+#                   ('Sami', 'Alam', 'sami@alam.net'),
+#                   ('Lakshmi', 'Kaur', 'lakshmi@kaur.org'),
+#                 ]
+
+# c.execute("INSERT INTO customers VALUES ('Jane', 'Jones', 'jane@jane.com')")
+# c.executemany("INSERT INTO customers VALUES (?,?,?)", many_customers)
+
+#Query the Database
+c.execute("SELECT * FROM customers")
+
+print(c.fetchall())
+
+print("command executed successfully")
+
+connection.commit()
+
+  # close the connection explicitly
+connection.close()
